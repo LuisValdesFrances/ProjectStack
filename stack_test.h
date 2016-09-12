@@ -1,0 +1,6 @@
+#ifndef STACK_TEST_H_INCLUDED
+#define STACK_TEST_H_INCLUDED
+
+void test();
+
+#endif // STACK_TEST_H_INCLUDED
