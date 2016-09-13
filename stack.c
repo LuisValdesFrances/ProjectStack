@@ -10,24 +10,13 @@ struct _node{
 
 struct _stack{
     int size;
-    node *first;
+    node *head;
 };
-
-static void addNode(node *currentNode, node *finalNode){
-
-    if(currentNode->next == NULL){
-        printf("\npush\n");
-        //currentNode->next = finalNode;
-    }else{
-        //addNode(currentNode->next, finalNode);
-    }
-
-}
 
 Stack createStack(){
     Stack stack = malloc(sizeof(struct _stack));
     stack->size = 0;
-    stack->first = NULL;
+    stack->head = NULL;
     return stack;
 }
 
@@ -37,8 +26,36 @@ void destroyStack(Stack *pStack){
 }
 
 void push(Stack stack, char value){
-    node finalNode = {value, NULL};
-    addNode(stack->first, &finalNode);
+    node *n = malloc(sizeof(node));
+    n->value = value;
+    n->next = stack->head;
+    stack->head = n;
     stack->size++;
+}
+
+char peek(Stack stack){
+    if(stack->size > 0){
+        node n = *stack->head;
+        return n.value;
+    }else{
+        return NULL;
+    }
+}
+
+char pop(Stack stack){
+    if(stack->size > 0){
+        node *n = stack->head;
+        stack->head = n->next;
+        char value = n->value;
+        free(n);
+        stack->size--;
+        return value;
+    }else{
+        return NULL;
+    }
+}
+
+int getSize(Stack stack){
+    return stack->size;
 }
 

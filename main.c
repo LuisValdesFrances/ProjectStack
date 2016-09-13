@@ -21,25 +21,6 @@ int main()
 {
     test();
 
-    int *p = malloc(sizeof(int));
-    *p = 10;
-
-    printf("\nValue: %p", p);
-    printf("\nDirection: %p", &p);
-    printf("\nRef: %d", *p);
-    free(p);
-
-    printf("\n");
-
-    int *p2 = malloc(sizeof(int));
-    printf("\nValue: %p", p2);
-    printf("\nDirection: %p", &p2);
-    printf("\nRef: %d", *p2);
-
-
-    printf("\n");
-
-
     char charactersArray[MAX_SIZE];
     init(charactersArray, MAX_SIZE);
     printf("Enter characters\n");
